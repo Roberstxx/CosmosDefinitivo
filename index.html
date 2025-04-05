@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Video de fondo -->
     <video autoplay loop muted playsinline id="bg-video">
         <source src="/videos/galalxy.mp4" type="video/mp4">
     </video>
-    <!-- Contenido principal -->
     <div class="content">
-        <h1>Bienvenido al cosmos, donde la imaginación no tiene límites</h1>
+        <div class="title-wrapper">
+            <h1>Bienvenido al cosmos</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="sistema-solar.html">Sistema Solar</a></li>
@@ -25,16 +25,13 @@
             </ul>
         </nav>
 
-        <!-- Modelo 3D de Spline -->
         <div id="spline-wrapper">
             <iframe src="https://my.spline.design/earthdayandnight-ae282d0334411b998142525a25612f9e/" 
-                frameborder="0">
+                    frameborder="0">
             </iframe>
         </div>
     </div>
 
     <script src="js/script.js" type="module"></script>
-    
 </body>
 </html>
-
