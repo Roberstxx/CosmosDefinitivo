@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <video autoplay loop muted playsinline id="bg-video">
-        <source src="/videos/galalxy.mp4" type="video/mp4">
-    </video>
+    <div id="three-background"></div> <!-- Fondo 3D reemplazando el video -->
+
     <div class="content">
         <div class="title-wrapper">
             <h1>Bienvenido al cosmos</h1>
@@ -32,6 +31,9 @@
         </div>
     </div>
 
-    <script src="js/script.js" type="module"></script>
+    <!-- Three.js y tu fondo personalizado -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/stars-background.js" type="module"></script>
 </body>
 </html>
+
