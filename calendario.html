@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Evento Cósmico en tu Cumpleaños</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ===== Estilo general del fondo y texto ===== */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top right, #050018, #0c0932, #140e40); /* Fondo oscuro espacial */
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    /* ===== Título principal ===== */
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 2px 2px 8px #00f0ff; /* Sombra azul clara */
+    }
+
+    /* ===== Contenedor de la sección ===== */
+    section {
+      background-color: rgba(255, 255, 255, 0.05); /* Sutil transparencia */
+      padding: 35px;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 30px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1); /* Sombra tipo glow */
+      text-align: center;
+    }
+
+    /* ===== Estilo del formulario ===== */
+    form {
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-size: 1.1em;
+      text-shadow: 1px 1px 4px #fff;
+    }
+
+    input[type="date"],
+    button {
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    input[type="date"] {
+      background-color: #fff;
+      color: #000;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    /* ===== Botón ===== */
+    button {
+      background-color: #00c2ff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    button:hover {
+      background-color: #009ecb;
+      transform: scale(1.05);
+    }
+
+    /* ===== Imagen de la NASA ===== */
+    img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ===== Contenedor de resultado oculto inicialmente ===== */
+    .hidden {
+      display: none;
+    }
+
+    h3 {
+      text-shadow: 1px 1px 5px #00f0ff;
+    }
+
+    p {
+      text-shadow: 1px 1px 3px #aaa;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Sección del formulario y resultados ===== -->
+  <section id="nasa-apod">
+    <h2>Dato curioso del universo el día en que naciste</h2>
+
+    <!-- Formulario simple con fecha de nacimiento -->
+    <form id="apod-form">
+      <label for="birthdate">Selecciona tu fecha de nacimiento:</label><br />
+      <input type="date" id="birthdate" name="birthdate" required /><br />
+      <button type="submit">Descubrir Evento</button>
+    </form>
+
+    <!-- Resultados de la API -->
+    <div id="apod-result" class="hidden">
+      <h3 id="apod-title"></h3>
+      <img id="apod-image" alt="Imagen del evento cósmico" />
+      <p id="apod-description"></p>
+    </div>
+  </section>
+
+  <!-- ===== Script con lógica para obtener datos de la API ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("apod-form");
+      const birthdateInput = document.getElementById("birthdate");
+      const resultSection = document.getElementById("apod-result");
+      const title = document.getElementById("apod-title");
+      const image = document.getElementById("apod-image");
+      const description = document.getElementById("apod-description");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const date = birthdateInput.value;
+
+        // 🔑 Aquí se define tu API Key personal de la NASA
+        const apiKey = "2qSBo4SR5ZcfzH5uRxbCTjizz3nE7bTNT5bc0791"; // Sustituye esto por tu propia API KEY
+
+        // Llamada a la NASA APOD API
+        fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`)
+          .then((res) => res.json())
+          .then((data) => {
+            // Mostramos los datos si se obtiene una respuesta válida
+            title.textContent = data.title;
+            description.textContent = data.explanation;
+
+            // Si el tipo de medio es imagen, la mostramos
+            if (data.media_type === "image") {
+              image.src = data.url;
+              image.style.display = "block";
+            } else {
+              image.style.display = "none";
+            }
+
+            // Mostramos el contenedor
+            resultSection.classList.remove("hidden");
+          })
+          .catch((err) => {
+            // En caso de error, mostramos mensaje al usuario
+            console.error(err);
+            title.textContent = "No se encontró información para esa fecha.";
+            description.textContent = "";
+            image.style.display = "none";
+            resultSection.classList.remove("hidden");
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>
