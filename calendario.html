@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <title>Evento Cósmico en tu Cumpleaños</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
+ <style>
     /* ===== Estilo general del fondo y texto ===== */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,11 +39,25 @@
       margin-bottom: 30px;
       box-shadow: 0 0 30px rgba(0, 255, 255, 0.1); /* Sombra tipo glow */
       text-align: center;
+      /*centrar todo lo que esta dentro */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     /* ===== Estilo del formulario ===== */
     form {
       margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px; /* Espacio entre los elementos del formulario */
+      padding: 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      overflow: hidden;
+      text-align: center;
     }
 
     label {
@@ -98,6 +115,24 @@
     p {
       text-shadow: 1px 1px 3px #aaa;
       line-height: 1.6;
+      text-align: justify;
+      font-size: 1.1em;
+
+    }
+    #apod-result.show {
+     opacity: 1;
+     animation: fadeInUP 0.6s ease-in-out;
+      
+    }
+    @keyframes fadeInUP {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
