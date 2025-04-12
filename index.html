@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmos</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <!-- Configuración de codificación y diseño responsivo -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título de la página -->
+  <title>Cosmos</title>
+
+  <!-- Vinculo al archivo de estilos CSS -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="three-background"></div> <!-- Fondo 3D reemplazando el video -->
+  <!-- Fondo animado usando Three.js -->
+  <div id="three-background"></div>
 
-    <div class="content">
-        <div class="title-wrapper">
-            <h1>Bienvenido al cosmos</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="sistema-solar.html">Sistema Solar</a></li>
-                <li><a href="estrellas-galaxias.html">Estrellas y Galaxias</a></li>
-                <li><a href="fenomenos-cosmicos.html">Fenómenos Cósmicos</a></li>
-                <li><a href="exploracion-espacial.html">Exploración Espacial</a></li>
-                <li><a href="glosario-cosmico.html">Glosario Cósmico</a></li>
-                <li><a href="curiosidades-cosmicas.html">Curiosidades Cósmicas</a></li>
-                <li><a href="calendario.html">Calendario Cósmico</a></li>
-            </ul>
-        </nav>
+  <!-- Contenedor principal para el contenido de la página -->
+  <div class="content">
 
-        <div id="spline-wrapper">
-            <iframe src="https://my.spline.design/earthdayandnight-ae282d0334411b998142525a25612f9e/" 
-                    frameborder="0">
-            </iframe>
-        </div>
+    <!-- Menú superior con el título de bienvenida -->
+    <div class="title-wrapper">
+      <h1>Bienvenido al cosmos</h1>
     </div>
 
-    <!-- Three.js y tu fondo personalizado -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/stars-background.js" type="module"></script>
+    <!-- Menú de navegación con enlaces a otras páginas -->
+    <nav>
+      <ul>
+        <li><a href="sistema-solar.html">Sistema Solar</a></li>
+        <li><a href="estrellas-galaxias.html">Estrellas y Galaxias</a></li>
+        <li><a href="fenomenos-cosmicos.html">Fenómenos Cósmicos</a></li>
+        <li><a href="exploracion-espacial.html">Exploración Espacial</a></li>
+        <li><a href="glosario-cosmico.html">Glosario Cósmico</a></li>
+        <li><a href="curiosidades-cosmicas.html">Curiosidades Cósmicas</a></li>
+        <li><a href="calendario.html">Calendario Cósmico</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sección de carrusel para modelos interactivos -->
+    <div class="carousel">
+      <!-- Diapositiva activa con un modelo 3D -->
+      <div class="slide active">
+        <iframe src="https://my.spline.design/earthdayandnight-ae282d0334411b998142525a25612f9e/" frameborder="0"></iframe>
+      </div>
+
+      <!-- Diapositivas adicionales -->
+      <div class="slide">
+        <iframe src="https://my.spline.design/anothermodel-xyz123/" frameborder="0"></iframe>
+      </div>
+      <div class="slide">
+        <iframe src="https://my.spline.design/yetanothermodel-abc456/" frameborder="0"></iframe>
+      </div>
+
+      <!-- Botones de control del carrusel -->
+      <button class="prev">❮</button>
+      <button class="next">❯</button>
+    </div>
+
+  </div>
+
+  <!-- Scripts necesarios para las funcionalidades de la página -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/stars-background.js" type="module"></script>
+  <script src="js/carousel.js"></script>
 </body>
 </html>
-
-
